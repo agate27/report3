@@ -9,10 +9,10 @@ package jp.ac.uryukyu.ie.e225722;
  * Created by tnal on 2016/11/13.
  */
 public class Enemy {
-    public String name;
-    public int hitPoint;
-    public int attack;
-    public boolean dead;
+    private String name;
+    private int hitPoint;
+    private int attack;
+    private boolean dead;
 
     /**
      * コンストラクタ。名前、最大HP、攻撃力を指定する。
@@ -36,7 +36,7 @@ public class Enemy {
     public void attack(Hero hero){
         if (this.dead == false){
             int damage = (int)(Math.random() * attack);
-            System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", name, hero.name, damage);
+            System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", name, hero.getName(), damage);
             hero.wounded(damage);
         }
     }
@@ -52,6 +52,75 @@ public class Enemy {
             dead = true;
             System.out.printf("モンスター%sは倒れた。\n", name);
         }
+    }
+
+    /**
+     * 敵の名前を取得します。
+     * @return 敵の名前
+     */
+    public String getName(){
+        return this.name;
+    }
+
+    /**
+     * 敵の名前を設定します。
+     * @param name 敵の名前
+     */
+    public void setName (String name){
+        if(name.length() <= 10){
+            System.out.println(this.name + "を" + name + "に変更しました");
+            this.name = name;
+        }else{
+            System.out.println("名前は10文字までにしてください");
+        }
+    }
+
+    /**
+     * 敵のHPを取得します。
+     * @return 敵のHP
+     */
+    public int getHitPoint(){
+        return this.hitPoint;
+    }
+
+    /**
+     * 敵のHPを設定します。
+     * @param hitPoint 敵のHP
+     */
+    public void setHitPoint(int hitPoint){
+        this.hitPoint = hitPoint;
+    }
+
+    /**
+     * 敵の攻撃力を取得します。
+     * @return 敵の攻撃力
+     */
+    public int getAttack(){
+        return this.attack;
+    }
+
+    /**
+     * 敵の攻撃力を設定します。
+     * @param attack 敵の攻撃力
+     */
+    public void setAttack(int attack){
+        this.attack = attack;
+    }
+
+    /**
+     * 敵の生死状態を取得します。
+     * @return 敵の生死状態
+     */
+    public boolean isDead(){
+        return this.dead;
+    }
+
+    /**
+     * 敵の攻撃力を設定します。
+     * @param dead 敵の生死状態
+     */
+    public void setDead(boolean dead){
+        this.dead = dead;
     }
 
 }

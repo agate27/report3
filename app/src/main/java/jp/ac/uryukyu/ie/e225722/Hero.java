@@ -2,17 +2,17 @@ package jp.ac.uryukyu.ie.e225722;
 
 /**
  * ヒーロークラス。
- *  String name; //敵の名前
- *  int hitPoint; //敵のHP
- *  int attack; //敵の攻撃力
- *  boolean dead; //敵の生死状態。true=死亡。
+ *  String name; //勇者の名前
+ *  int hitPoint; //勇者のHP
+ *  int attack; //勇者の攻撃力
+ *  boolean dead; //勇者の生死状態。true=死亡。
  * Created by tnal on 2016/11/13.
  */
 public class Hero {
-    public String name;
-    public int hitPoint;
-    public int attack;
-    public boolean dead;
+    private String name;
+    private int hitPoint;
+    private int attack;
+    private boolean dead;
 
     /**
      * コンストラクタ。名前、最大HP、攻撃力を指定する。
@@ -34,9 +34,11 @@ public class Hero {
      * @param e 攻撃対象
      */
     public void attack(Enemy e){
-        int damage = (int)(Math.random() * attack);
-        System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", name, e.name, damage);
-        e.wounded(damage);
+        if (this.dead == false){
+            int damage = (int)(Math.random() * attack);
+            System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", name, e.getName(), damage);
+            e.wounded(damage);
+        }
     }
 
     /**
@@ -50,5 +52,78 @@ public class Hero {
             dead = true;
             System.out.printf("勇者%sは道半ばで力尽きてしまった。\n", name);
         }
+    }
+
+    /**
+     * 勇者の名前を取得します。
+     * @return 勇者の名前
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * 勇者の名前を設定します。
+     * @param name 勇者の名前
+     */
+    public void setName(String name) {
+        if(name.length() <= 10){
+            System.out.println(this.name + "を" + name + "に変更しました");
+            this.name = name;
+        }else{
+            System.out.println("名前は10文字までにしてください");
+        }
+    }
+
+    /**
+     * 勇者のHPを取得します。
+     * @return 勇者のHP
+     */
+    public int getHitPoint() {
+        return hitPoint;
+    }
+
+    /**
+     * 勇者のHPを設定します。
+     * @param hitPoint 勇者のHP
+     */
+    public void setHitPoint(int hitPoint) {
+        this.hitPoint = hitPoint;
+    }
+
+    /**
+     * 勇者の攻撃力を取得します。
+     * @return 勇者の攻撃力
+     */
+    public int getAttack() {
+        return attack;
+    }
+
+    /**
+     * 勇者の攻撃力を設定します。
+     * @param attack 勇者の攻撃力
+     */
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
+
+    /**
+     * 勇者の生死状態を取得します。
+     * @return 勇者の生死状態
+     */
+    public boolean isDead() {
+        return dead;
+    }
+    
+    /**
+     * 勇者の攻撃力を設定します。
+     * @param dead 勇者の生死状態
+     */
+    public void setDead(boolean dead) {
+        this.dead = dead;
+    }
+
+    public Object name() {
+        return null;
     }
 }
