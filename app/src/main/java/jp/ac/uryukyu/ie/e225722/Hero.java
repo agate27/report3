@@ -116,14 +116,10 @@ public class Hero {
     }
     
     /**
-     * 勇者の攻撃力を設定します。
+     * 勇者の生死状態を設定します。
      * @param dead 勇者の生死状態
      */
     public void setDead(boolean dead) {
         this.dead = dead;
-    }
-
-    public Object name() {
-        return null;
     }
 }
